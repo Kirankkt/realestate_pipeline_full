@@ -3,7 +3,10 @@ from feature_engineering.fe_pipeline import build_fe
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
-df = pd.read_parquet("../processed/99acres_clean.parquet")
+import pathlib
+
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+df = pd.read_parquet(BASE_DIR / "processed" / "housing_clean.parquet")
 y  = df["price_min_lakhs"]
 X  = df.drop(columns=["price_min_lakhs"])
 
@@ -25,5 +28,5 @@ with mlflow.start_run():
     r2 = r2_score(y_val, preds)
     mlflow.log_metric("val_r2", r2)
     # save artefacts
-    joblib.dump(model, "../model_registry/99acres_xgb.joblib")
-    joblib.dump(fe,    "../model_registry/fe_pipeline.joblib")
+    joblib.dump(model, BASE_DIR / "model_registry" / "housing_xgb.joblib")
+    joblib.dump(fe,    BASE_DIR / "model_registry" / "fe_pipeline.joblib")

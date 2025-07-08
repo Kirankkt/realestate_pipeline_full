@@ -2,14 +2,14 @@ from prefect import flow, task
 
 @task(retries=3, retry_delay_seconds=60)
 def ingest():
-    from data_ingestion.scrape_99acres import NinetyNineAcresScraper
-    df = NinetyNineAcresScraper(pages=50).crawl()
-    df.to_parquet("raw_data/99acres.parquet")
+    from data_ingestion.scrape_99acres import PublicHousingScraper
+    df = PublicHousingScraper().crawl()
+    df.to_parquet("raw_data/housing.parquet")
 
 @task
 def clean():
     from data_processing.clean_99acres import clean as _clean
-    _clean("raw_data/99acres.parquet", "processed/99acres_clean.parquet")
+    _clean("raw_data/housing.parquet", "processed/housing_clean.parquet")
 
 @task
 def train():
