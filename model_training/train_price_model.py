@@ -28,5 +28,7 @@ with mlflow.start_run():
     r2 = r2_score(y_val, preds)
     mlflow.log_metric("val_r2", r2)
     # save artefacts
-    joblib.dump(model, BASE_DIR / "model_registry" / "housing_xgb.joblib")
-    joblib.dump(fe,    BASE_DIR / "model_registry" / "fe_pipeline.joblib")
+    model_dir = BASE_DIR / "model_registry"
+    model_dir.mkdir(parents=True, exist_ok=True)
+    joblib.dump(model, model_dir / "housing_xgb.joblib")
+    joblib.dump(fe,    model_dir / "fe_pipeline.joblib")
