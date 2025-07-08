@@ -4,6 +4,7 @@ CLI wrapper:  python -m data_ingestion.run_scraper --pages 2
 
 import argparse
 import pathlib
+import pyarrow  # required for to_parquet
 
 from .scrape_99acres import NinetyNineAcresScraper
 

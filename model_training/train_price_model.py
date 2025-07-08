@@ -1,4 +1,5 @@
 import mlflow, xgboost as xgb, pandas as pd, joblib
+import pyarrow  # pandas parquet dependency
 from feature_engineering.fe_pipeline import build_fe
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score

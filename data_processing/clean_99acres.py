@@ -1,4 +1,5 @@
 import pandas as pd
+import pyarrow  # ensures parquet engine available
 from pydantic import BaseModel, ValidationError
 
 class CleanRow(BaseModel):

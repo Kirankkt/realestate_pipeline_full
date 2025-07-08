@@ -12,6 +12,7 @@ from datetime import datetime
 from typing import List, Optional
 
 import cloudscraper, pandas as pd
+import pyarrow  # ensures pandas parquet engine
 from bs4 import BeautifulSoup
 from pydantic import BaseModel, Field
 from tenacity import retry, wait_random_exponential, stop_after_attempt

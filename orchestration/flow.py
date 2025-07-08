@@ -1,4 +1,5 @@
 from prefect import flow, task
+import pyarrow  # needed for parquet I/O
 
 @task(retries=3, retry_delay_seconds=60)
 def ingest():
