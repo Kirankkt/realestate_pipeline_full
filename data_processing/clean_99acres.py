@@ -6,6 +6,7 @@ class CleanRow(BaseModel):
     area_min_sqft: int
     location: str
     bedrooms: int | None
+    price_per_sqft: float
 
 def clean(path_in: str, path_out: str):
     df = pd.read_parquet(path_in)
@@ -23,4 +24,6 @@ def clean(path_in: str, path_out: str):
     pd.DataFrame(good).to_parquet(path_out, index=False)
 
 if __name__ == "__main__":
-    clean("../raw_data/99acres.parquet", "../processed/99acres_clean.parquet")
+    import pathlib
+    base = pathlib.Path(__file__).resolve().parent.parent
+    clean(base / "raw_data" / "housing.parquet", base / "processed" / "housing_clean.parquet")

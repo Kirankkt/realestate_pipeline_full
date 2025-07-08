@@ -5,8 +5,8 @@ from sklearn.impute import SimpleImputer
 import pandas as pd
 
 def build_fe(df: pd.DataFrame):
-    cat_cols = ["location", "status"]
-    num_cols = ["area_min_sqft", "bedrooms", "price_per_sqft"]
+    cat_cols = ["location"]
+    num_cols = ["area_min_sqft", "bedrooms"]
 
     pre = ColumnTransformer(
         transformers=[
