@@ -2,7 +2,7 @@
 CLI wrapper to fetch the public California Housing dataset.
 
 Example:
-    python -m data_ingestion.run_scraper --out ..\raw_data\housing.parquet
+    python -m data_ingestion.run_scraper --out ../raw_data/housing.parquet
 """
 
 import argparse
@@ -16,7 +16,7 @@ def main() -> None:
     parser.add_argument(
         "--out",
         type=str,
-        default="..\\raw_data\\housing.parquet",
+        default="../raw_data/housing.parquet",
         help="Relative output path (from this file)",
     )
     args = parser.parse_args()
